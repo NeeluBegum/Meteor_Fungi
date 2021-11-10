@@ -10,13 +10,13 @@ mspdownload = args[3]
 #name = args[4]
 
 ## for testing only
-#gctFile = '/proj/snic2020-6-153/nobackup/private/fungalnftest/gct.tsv'
-#mspdownload = "/proj/uppstore2019028/projects/metagenome/dataverse_fungi_files/Fungi.twins.tsv"
-#indexedCatalog = "/crex/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/database/fungal_catalog_lite_annotation"
-#gctFile = "/proj/snic2020-6-153/nobackup/private/fungalnftest/gct.tsv"
-#mspdownload = "/proj/uppstore2019028/projects/metagenome/ddataverse_fungi_files/Fungi.twins.tsv"
-#indexedCatalog = "/crex/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/database/fungal_catalog_lite_annotation"
-#name = 'test'
+gctFile = '/proj/snic2020-6-153/nobackup/private/fungalnftest/gct.tsv'
+mspdownload = "/proj/uppstore2019028/projects/metagenome/dataverse_fungi_files/Fungi.twins.tsv"
+indexedCatalog = "/crex/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/database/fungal_catalog_lite_annotation"
+gctFile = "/proj/snic2020-6-153/nobackup/private/fungalnftest/gct.tsv"
+mspdownload = "/proj/uppstore2019028/projects/metagenome/ddataverse_fungi_files/Fungi.twins.tsv"
+indexedCatalog = "/crex/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/database/fungal_catalog_lite_annotation"
+reference="/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/reference.txt"
 
 print("gct loading")
 gctTab = read.delim(gctFile, row.names=1, sep="\t", stringsAsFactors=F, header=T)
@@ -62,6 +62,11 @@ MSP_data[MSP_data==""] <- NA
 MSP_data <- MSP_data[!(is.na(MSP_data$msp_name)),]
 print("catalog info loaded")
 
+
+#attaching fungal gene annotation
+
+
+
 print("mgs generation begin")
 MSP_id = split(MSP_data$gene_id, MSP_data$msp_name)
 mgsList = MSP_id
@@ -84,4 +89,5 @@ mgs.dat <- momr::extractProfiles(mgs, data)
 mgs.med.vect <- momr::computeFilteredVectors(profile=mgs.dat, type="median")
 mgs.med.vect <- mgs.med.vect[rowSums(mgs.med.vect)>0,]
 write.csv(mgs.med.vect, quote=F, file="msp.csv")
-print("mgs generation done")
+
+print("fungal genecount table generation done")
