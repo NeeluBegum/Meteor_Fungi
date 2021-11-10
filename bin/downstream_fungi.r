@@ -10,10 +10,10 @@ mspdownload = args[3]
 #name = args[4]
 
 ## for testing only
-#gctFile = '/proj/uppstore2019028/nobackup/personal/neelu/nmdsmeteor/gct.tsv'
+#gctFile = '/proj/snic2020-6-153/nobackup/private/fungalnftest/gct.tsv'
 #mspdownload = "/proj/uppstore2019028/projects/metagenome/dataverse_fungi_files/Fungi.twins.tsv"
 #indexedCatalog = "/crex/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/database/fungal_catalog_lite_annotation"
-#gctFile = "/proj/snic2020-6-153/nobackup/private/fungalnftest/work/6b/282d8e4afa311a83cdc89655f62e52/gct.tsv"
+#gctFile = "/proj/snic2020-6-153/nobackup/private/fungalnftest/gct.tsv"
 #mspdownload = "/proj/uppstore2019028/projects/metagenome/ddataverse_fungi_files/Fungi.twins.tsv"
 #indexedCatalog = "/crex/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/database/fungal_catalog_lite_annotation"
 #name = 'test'
