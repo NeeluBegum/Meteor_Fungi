@@ -18,6 +18,16 @@ mspdownload = "/proj/uppstore2019028/projects/metagenome/ddataverse_fungi_files/
 indexedCatalog = "/crex/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/database/fungal_catalog_lite_annotation"
 reference="/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/reference.txt"
 
+#attaching fungal gene annotation
+#column count
+awk '{print NF}' geneCount2.txt | sort -nu | tail -n 1
+#remove double quotes
+sed 's/"//g' geneCount.txt -> geneCount2.txt
+#adjust rowname
+sed -i '1s/^/row.name       /' geneCount2.txt
+#attach functional gene names using reference.txt
+head -n1 geneCount2.txt; awk 'FNR==NR {a[$1]; next} $1 in a' reference.txt geneCount2.txt > report_species3.txt
+
 print("gct loading")
 gctTab = read.delim(gctFile, row.names=1, sep="\t", stringsAsFactors=F, header=T)
 #gctNorm10m = read.csv(gctFile, row.names=1, stringsAsFactors=F, header=T)
@@ -56,16 +66,17 @@ gctNorm10m = momr::normFreqRPKM(dat=gctdown10m, cat=genesizes)
 #write.csv(gctNorm10m, quote=F, file="norm.csv")
 print("norm finished")
 
+
+
+
+
+
+#delete below
 print("catalog info loading")
 MSP_data = read.csv(mspdownload, sep="\t", stringsAsFactors=F, header=T)
 MSP_data[MSP_data==""] <- NA
 MSP_data <- MSP_data[!(is.na(MSP_data$msp_name)),]
 print("catalog info loaded")
-
-
-#attaching fungal gene annotation
-
-
 
 print("mgs generation begin")
 MSP_id = split(MSP_data$gene_id, MSP_data$msp_name)
