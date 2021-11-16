@@ -1,4 +1,4 @@
-#!/usr/bin
+#!/usr/bin/bash
 
 ######attaching fungal gene annotation
 
