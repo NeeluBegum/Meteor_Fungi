@@ -1,12 +1,13 @@
-
-   
 #!/usr/bin/Rscript
 #memory.limit(9999999999)
 require('dplyr')  
 require('reshape2')
 require('data.table')
 
-geneCount="/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/geneCount.txt"
+args = commandArgs(trailingOnly=TRUE)
+gctCount = args[1]
+
+#geneCount="/proj/uppstore2019028/projects/metagenome/meteor_ref/fungal_catalog/geneCount.txt"
 
 
 #Cut off 
