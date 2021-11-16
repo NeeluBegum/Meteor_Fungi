@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+gctFile = $1
+
 ######attaching fungal gene annotation
 
 ## files
